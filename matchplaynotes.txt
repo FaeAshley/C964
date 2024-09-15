@@ -1,0 +1,15 @@
+API Token:
+256|97M5BIHlARuHRVnbfNsEKjG9OyOmsH6YQjTG3ALE101be7be
+
+Tournamet ID:
+138243
+
+Get Games from Tournament:
+'https://app.matchplay.events/api/games/138243?';
+
+Get Tournament w/all players:
+'https://app.matchplay.events/api/tournaments/138243?includePlayers=1';
+
+
+Player ID + Results by Game:
+'https://app.matchplay.events/api/tournaments/138243/games/4348941';
