@@ -8,7 +8,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, accuracy_score, confusion_matrix
 from sklearn.preprocessing import LabelEncoder
 
-# Step 1: Connect to the Database
+# Connect to the Database
 engine = create_engine('mysql+mysqlconnector://root:@localhost:3307/pinball_api')
 
 # Fetch all data in a single query
@@ -29,12 +29,11 @@ JOIN
     matchplay_players mp ON g.first = mp.player_id OR g.second = mp.player_id OR g.third = mp.player_id OR g.fourth = mp.player_id
 JOIN 
     players p ON mp.ifpa_id = p.ifpa_id
-LIMIT 10000
 """
 # Execute the query and load data into DataFrame
 df = pd.read_sql(query, engine)
 
-# Step 2: Prepare the Data
+# Prepare the Data
 for col in ['ifpa_rank', 'first_place', 'second_place', 'third_place', 'fourth_place']:
     df[col] = pd.to_numeric(df[col], errors='coerce')
 df.dropna(inplace=True)
